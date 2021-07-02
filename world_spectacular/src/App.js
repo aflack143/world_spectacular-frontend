@@ -21,7 +21,7 @@ class App extends Component {
         id: 1,
       },
       countries: [],
-      country: {},
+      // country: {},
 
     }
   }
@@ -34,12 +34,12 @@ class App extends Component {
       countries: countries.data
     })
     // const country = await axios(`https://restcountries.eu/rest/v2/alpha/${abbr}`)
-    const country = await axios(`https://restcountries.eu/rest/v2/alpha/usa`)
-    console.log(country.data)
-    this.setState({
-      country: country.data
-    })
-    console.log(this.state.country.name)
+    // const country = await axios(`https://restcountries.eu/rest/v2/alpha/${this.props.match.params.abbr}`)
+    // console.log(country.data)
+    // this.setState({
+    //   country: country.data
+    // })
+    // console.log(this.state.country.name)
   }
 
   render(){
@@ -49,7 +49,7 @@ class App extends Component {
         <main>
            <Route exact path='/' render={() => <img src={'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Ftrevornace%2Ffiles%2F2015%2F11%2Ftaj-mahal-india-1200x740.jpg'}/>}/>
            <Route exact path='/world' render={() => <World countries={this.state.countries}/>}/>
-           <Route exact path='/country/:abbr' render={(props) => <Country {...props} country={this.state.country}/>}/>
+           <Route exact path='/country/:abbr' render={(props) => <Country {...props}/>}/>
            <Route exact path='/login' render={(props) => <Login />}/>
            <Route exact path='/signup' render={(props) => <Signup />}/>
            <Route exact path='/profile/:id' render={(props) => <Profile {...props} sessionUser={this.state.sessionUser}/>}/>

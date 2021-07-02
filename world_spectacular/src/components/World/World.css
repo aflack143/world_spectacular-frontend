@@ -1,3 +1,29 @@
-.country-box {
-    border: 1px black solid;
+#world {
+    width: 100%;
 }
+.world-container {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 2300px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.country-box {
+    /* border: 1px black solid; */
+    width: 315px;
+    max-width: 30%;
+    min-height: 24px;
+    text-align: left;
+    margin: 1px auto;
+}
+
+#world img {
+    width: 95%;
+    height: 500px;
+    border: 2px solid black;
+}
+

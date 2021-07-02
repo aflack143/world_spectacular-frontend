@@ -1,0 +1,24 @@
+#profile {
+    width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: ; */
+}
+
+.profile, .places {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.profile div, .places div {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile img {
+    width: 40%;
+}
+
