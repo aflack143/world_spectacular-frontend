@@ -7,7 +7,7 @@ const Header = (props) => {
   return (
     <header>
         <h1>World Spectacular</h1>
-        {props.sessionUser && <Nav />}
+        {props.sessionUser && <Nav sessionUser={props.sessionUser}/>}
     </header>
   );
 }
