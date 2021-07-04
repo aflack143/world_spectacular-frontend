@@ -12,15 +12,19 @@ const World = (props) => {
         if (a.name === 'Åland Islands') {
             a.name = 'Aland Islands';
             if (nameA < nameB) {
+                a.name = 'Åland Islands'
                 return -1;
             } if (nameA > nameB) {
+                a.name = 'Åland Islands'
                 return 1;
             } return 0;
         } else if (b.name === 'Åland Islands') {
             b.name = 'Aland Islands';
             if (nameA < nameB) {
+                b.name = 'Åland Islands'
                 return -1;
             } if (nameA > nameB) {
+                b.name = 'Åland Islands'
                 return 1;
             } return 0;
         } else {
