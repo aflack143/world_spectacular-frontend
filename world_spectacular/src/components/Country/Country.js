@@ -12,17 +12,13 @@ class Country extends Component {
       currencies: [],
       languages: [],
       borders: [],
-      // anthem: '',
-      // play: false
+      anthem: '',
     }
   }
 
-  // audio = 'https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga'
-
-
-  async componentDidMount(abbr) {
+  fetchData = async (abbr) => {
     const country = await axios(`https://restcountries.eu/rest/v2/alpha/${this.props.match.params.abbr}`)
-    console.log(country.data)
+    console.log(country)
     const anthem = 'https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga'
     
     this.setState({
@@ -31,48 +27,46 @@ class Country extends Component {
       languages: country.data.languages,
       borders: country.data.borders,
       anthem: anthem,
-      // play: false
     })
-//    this.state.anthem.addEventListener('ended', () => this.setState({  ...this.state, play: false }));
   }
-  // componentWillUnmount() {
-  //   this.state.anthem.removeEventListener('ended', () => this.setState({ ...this.state, play: false }));  
-  // }
-// toggleplay = () => {
-//   console.log('sound init')
-//   this.setState({ ...this.state, play: !this.state.play }, () => {
-//     this.state.play ? this.state.anthem.play() : this.state.anthem.pause()
-//   })
-// }
+
+  async componentDidMount(abbr) {
+    this.fetchData(this.props.match.params.abbr)
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.match.params.abbr !== prevProps.match.params.abbr){this.fetchData()}
+  }
+  
   render() {
     const country = this.state.country
     const anthem = this.state.anthem
     console.log(anthem)
     return (
-      <div>
-        <h3>Country</h3>
+      <div background-image='url{country.flag}'>
+        {/* <h2>Country</h2> */}
+        <h2>{country.name} ({country.alpha3Code})</h2>
+        <img className='flag' src={country.flag} alt='flag'/>
         <ReactAudioPlayer
           src={this.state.anthem}
           // autoPlay
           controls
         />
-        <h4>{country.name} ({country.alpha3Code})</h4>
-        <img src={country.flag} alt='flag'/>
         <div>
         <p>Capital: {country.capital}</p>
         <p>Currency: {this.state.currencies.map(currency => {
           return (`${currency.symbol} = ${currency.code} (${currency.name})`)
         })}</p>
         <p>Language(s): {this.state.languages.map(language => {
-          return (`${language.name}`)
+          return (`${language.name}  `)
         })}</p>
         <p>Population: {parseInt(country.population).toLocaleString()}</p>
         <p>Bordering Countries:</p>
         {this.state.borders && this.state.borders.map(border => {
           return <li>
-            {/* <Link to={`/country/${border}`}> */}
+            <Link to={`/country/${border}`}>
               {border}
-              {/* </Link> */}
+              </Link>
               </li> })}
                     
         </div>
