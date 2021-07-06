@@ -9,6 +9,7 @@ import Signup from './components/Signup/Signup';
 import Profile from './components/Profile/Profile';
 import World from './components/World/World';
 import Country from './components/Country/Country';
+import Search from './components/Search/Search';
 
 class App extends Component {
   constructor(props){
@@ -50,6 +51,7 @@ class App extends Component {
            <Route exact path='/' render={() => <img src={'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Ftrevornace%2Ffiles%2F2015%2F11%2Ftaj-mahal-india-1200x740.jpg'}/>}/>
            <Route exact path='/world' render={() => <World countries={this.state.countries}/>}/>
            <Route exact path='/country/:abbr' render={(props) => <Country {...props}/>}/>
+           {/* <Route exact path='/world/search' render={(props) => <Search {...props}/>}/> */}
            <Route exact path='/login' render={(props) => <Login />}/>
            <Route exact path='/signup' render={(props) => <Signup />}/>
            <Route exact path='/profile/:id' render={(props) => <Profile {...props} sessionUser={this.state.sessionUser}/>}/>

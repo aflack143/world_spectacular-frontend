@@ -71,6 +71,7 @@ class Country extends Component {
                     
         </div>
         <div>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Afghanistan_%28orthographic_projection%29.svg/800px-Afghanistan_%28orthographic_projection%29.svg.png'/>
           {/* <a href={`https://kids.nationalgeographic.com/geography/countries/article/${country.name.toLowerCase()}`}/> */}
         </div>
       </div>

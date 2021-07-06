@@ -8,8 +8,8 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 2300px;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .country-box {
