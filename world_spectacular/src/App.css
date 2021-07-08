@@ -4,6 +4,8 @@
 }
 body {
   background-color: rgb(156, 172, 175);
+  background-color: bisque;
+  color: darkgreen;
 }
 
 .App {
@@ -24,4 +26,12 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+#home {
+  background:rgb(1, 3, 26);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Globespin_persec.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 80vh;
 }

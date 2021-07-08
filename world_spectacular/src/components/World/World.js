@@ -10,10 +10,10 @@ class World extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            countries: props.countries,
-            // world: props.countries,
+            countries: [],
+            world: [],
             type: 'name',
-            searchInput: '',
+            searchInput: null,
             errorMsg: ''
         }
     }
@@ -51,67 +51,64 @@ class World extends Component {
     }
 
     handleSearchType = (e) => {
-        // e.preventDefault()
-        this.setState(prevState=>({...prevState,
-            type: e.target.value
-        }))
-        // this.searchWorld(e.target.value)
-    }
-
-    setCountryState = (resp) => {
-        this.setState({
-            countries: resp.data,
-            // world: this.state.world,
-            type: this.state.type,
-            searchInput: this.state.searchInput,
-            errorMsg: this.state.errorMsg
-        }, () =>{})}
-
-    fetchData = async (e) => {
-        if (this.state.searchInput !== '' && this.state.type === 'name') {
-        // const countries = 
-        await axios.get(`https://restcountries.eu/rest/v2/${this.state.type}/${this.state.searchInput}`)
-        .then(resp => this.setCountryState(resp))
-        .catch(err => this.setState(prevState=>({...prevState, errorMsg: err.message})))
-        // const countries = resp
-        // this.setCountryState(countries)
-        } else {
-        //     // e.persist()
-        // if (this.state.searchInput !== ''){
-        await axios.get(`https://restcountries.eu/rest/v2/all`)
-        .then(resp => this.setCountryState(resp))
-        .catch(err => this.setState(prevState=>({...prevState, errorMsg: err.message})))
-            // this.setState({
-            //     countries: this.state.world,
-            //     world: this.state.world,
-            //     type: this.state.type,
-            //     searchInput: this.state.searchInput
-            // })}
-            // this.setCountryState(countries)
-            // console.log(this.state.countries)
-        // }
-    }
-    }
-
-    // searchWorld = async (type, input) => {
-        // const countries = await axios(`https://restcountries.eu/rest/v2/${type}/${input}`);
-    searchWorld = (e) => {
-        // e.preventDefault()
-        const searchInput = e.target.value
-        console.log(e.target.value)
         this.setState({
             countries: this.state.countries,
-            type: this.state.type,
-            searchInput: e.target.value
-        }, () =>{})
-        this.fetchData()
+            type: e.target.value,
+            searchInput: this.state.searchInput,
+            errorMsg: this.state.errorMsg
+        })
     }
 
-    // componentDidMount = (props) => {
-    //     this.setState(prevState=>({...prevState,
-    //         countries: this.allCountries()
-    //         }))
-    // }
+    // setCountryState = async (resp) => {
+    //     await this.setState({
+    //         countries: resp.data,
+    //         world: this.state.world,
+    //         type: this.state.type,
+    //         searchInput: this.state.searchInput,
+    //         errorMsg: this.state.errorMsg
+    //     }, () =>{})}
+
+    fetchData = async () => {
+        await axios.get(`https://restcountries.eu/rest/v2/${this.state.type}/${this.state.searchInput}`)
+        .then(resp => this.setState(prevState=>({...prevState, countries: resp.data})))
+        // .then(resp => this.setCountryState(resp))
+        .catch(err => this.setState(prevState=>({...prevState, errorMsg: err.message})))
+        console.log(`${this.state.searchInput}`)
+    }
+
+    searchWorld = (e, props) => {
+        const searchInput = e.target.value
+        if(searchInput === ''){
+            this.setState({
+                countries: this.state.world,
+                world: this.state.world,
+                type: this.state.type,
+                searchInput: null,
+                errorMsg: this.state.errorMsg
+            })
+            return
+            }
+        // console.log(e.target.value)
+        this.setState({
+            countries: this.state.countries,
+            world: this.state.world,
+            type: this.state.type,
+            searchInput: e.target.value,
+            errorMsg: this.state.errorMsg
+        }, () => {
+        this.fetchData()})
+    }
+
+    async componentDidMount() {
+        const countries = await axios('https://restcountries.eu/rest/v2/all');
+        this.setState({
+            countries: countries.data,
+            world: countries.data,
+            type: 'name',
+            searchInput: null,
+            errorMsg: ''
+        })
+    }
     render() {
         console.log(this.state.countries)
         const countries = this.state.countries
@@ -120,16 +117,16 @@ class World extends Component {
                 <h3>Countries around the WORLD</h3>
                 <img src='https://geology.com/world/world-map.gif' alt='world_map' />
                 <div>
-                    <Search type={this.state.type} searchWorld={this.searchWorld} handleSearchType={this.handleSearchType}/>
+                    <Search searchInput={this.state.searchInput} type={this.state.type} searchWorld={this.searchWorld} handleSearchType={this.handleSearchType}/>
                 </div>
                 <div className='world-container'>
                     {countries.map(country => {
                         return (
-                            <li className='country-box'>
+                            <p className='country-box'>
                                 <Link to={`/country/${country.alpha3Code}`}>
                                     <CountryList country={country} />
                                 </Link>
-                            </li>
+                            </p>
                         )
                     })}
                 </div>
