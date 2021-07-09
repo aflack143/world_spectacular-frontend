@@ -13,6 +13,10 @@ class Country extends Component {
       languages: [],
       borders: [],
       anthem: '',
+      picture: {
+        picture1: '',
+        picture2: ''
+      }
     }
   }
 
@@ -27,6 +31,10 @@ class Country extends Component {
       languages: country.data.languages,
       borders: country.data.borders,
       anthem: anthem,
+      picture: {
+        picture1: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Amanhecer_no_Hercules_--.jpg/1280px-Amanhecer_no_Hercules_--.jpg',
+        picture2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sultan_Omar_Ali_Saifuddin_Mosque_02.jpg/1280px-Sultan_Omar_Ali_Saifuddin_Mosque_02.jpg',
+      }
     })
   }
 
@@ -44,15 +52,18 @@ class Country extends Component {
     console.log(anthem)
     return (
       <div background-image='url{country.flag}'>
-        {/* <h2>Country</h2> */}
+        <h2>Country</h2>
         <h2>{country.name} ({country.alpha3Code})</h2>
-        <img className='flag' src={country.flag} alt='flag'/>
+        <div>
+          <img className='flag' src={country.flag} alt='flag'/>
+          <img className='globe' src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Afghanistan_%28orthographic_projection%29.svg/800px-Afghanistan_%28orthographic_projection%29.svg.png'/>
+        </div>
+        <div>
         <ReactAudioPlayer
           src={this.state.anthem}
           // autoPlay
           controls
         />
-        <div>
         <p>Capital: {country.capital}</p>
         <p>Currency: {this.state.currencies.map(currency => {
           return (`${currency.symbol} = ${currency.code} (${currency.name})`)
@@ -70,8 +81,9 @@ class Country extends Component {
               </li> })}
                     
         </div>
-        <div>
-          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Afghanistan_%28orthographic_projection%29.svg/800px-Afghanistan_%28orthographic_projection%29.svg.png'/>
+        <div id='pictures'>
+          <img className='picture' src={this.state.picture.picture1}/>
+          <img className='picture' src={this.state.picture.picture2}/>
           {/* <a href={`https://kids.nationalgeographic.com/geography/countries/article/${country.name.toLowerCase()}`}/> */}
         </div>
       </div>

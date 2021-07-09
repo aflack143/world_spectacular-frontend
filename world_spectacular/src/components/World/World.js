@@ -118,6 +118,8 @@ class World extends Component {
                 <img src='https://geology.com/world/world-map.gif' alt='world_map' />
                 <div>
                     <Search searchInput={this.state.searchInput} type={this.state.type} searchWorld={this.searchWorld} handleSearchType={this.handleSearchType}/>
+                    {this.state.searchInput !== null && 
+                    <p>Search results for '{this.state.searchInput}'</p>}
                 </div>
                 <div className='world-container'>
                     {countries.map(country => {

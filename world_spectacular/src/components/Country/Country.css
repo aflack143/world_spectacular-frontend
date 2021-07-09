@@ -2,3 +2,19 @@
     width: 500px;
     height: 275px;
 }
+
+.globe {
+    width: 275px;
+}
+
+#pictures {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.picture {
+    max-width: 49%;
+    /* height: fit-content; */
+}

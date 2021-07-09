@@ -2,6 +2,7 @@ import './Home.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import AuthenticationButton from '../AuthenticationButton/AuthenticationButton';
 
 class Home extends Component {
   constructor(props) {
@@ -15,40 +16,6 @@ class Home extends Component {
     }
 }
 
-  // handleLoginClick = (e) => {
-  //   e.preventDefault()
-  //   this.setState(prevState => ({...prevState,
-  //     newUser: false
-  //   }))
-  // }
-  // handleSignupClick = (e) => {
-  //   e.preventDefault()
-  //   this.setState(prevState => ({...prevState,
-  //     newUser: true
-  //   }))
-  // }
-
-  // handleOnChange = (e) => {
-  //   this.setState(prevState => ({...prevState,
-  //       data: {
-  //           ...prevState.data,
-  //           [e.target.name]: e.target.value
-  //       }
-  //   }))
-  // }
-
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log('User Logging In')
-  //   axios.post("http://localhost:8000/api/token/", this.state.data)
-  //   .then(resp => {
-  //       this.props.history.push(`/profile/${resp.data.user.id}`)
-  //   })
-  //   .catch(err => {
-  //       console.log(err)
-  //   })
-  // }
-
   render() {
     return (
       <div id='home'> 
@@ -56,8 +23,8 @@ class Home extends Component {
           <ul>
               {/* <li className='login'><Link to={'/login'}>Log In</Link></li>
               <li className='signup'><Link to={'/signup'}>Sign Up</Link></li> */}
-              <button onclick={this.handleLoginClick}>Log In</button>
-              <button onclick={this.handleSignupClick}>Sign Up</button>
+              <button onclick={this.handleLoginClick}><AuthenticationButton /></button>
+              {/* <button onclick={this.handleSignupClick}><SignupButton /></button> */}
           </ul>
           {/* {!this.state.newUser  &&
           <Login handleSubmit={this.handleOnChange} handleSubmit={this.handleSubmit}/>}

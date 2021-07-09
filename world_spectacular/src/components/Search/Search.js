@@ -14,8 +14,8 @@ const Search = (props) => {
     return (
         <div id='search'>
             <div>
-                <fieldset className="search-input" onChange={props.searchWorld}>
-                    <label for='name'><input type='search' name='name' placeholder='Search here' required /></label>
+                <fieldset onChange={props.searchWorld}>
+                    <label for='name'><input className="search-input" type='search' name='name' placeholder='Search here' required /></label>
                 </fieldset>
                 <fieldset className="search-type" onChange={props.handleSearchType}>
                 <label className='radiobtn' for='name'><input className='radiobtn' type='radio' name='name' value='name' checked={props.type === 'name'}/>Name</label>
