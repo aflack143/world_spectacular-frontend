@@ -7,3 +7,5 @@
 Resources: 
 [Refreshing page when only /:abbr changes](https://stackoverflow.com/questions/64223938/react-link-doesnt-refresh-page-automatically)
 [Changing title bar icon](https://www.geeksforgeeks.org/how-to-add-icon-logo-in-title-bar-using-html/)
+
+[Auth0](https://auth0.com/blog/complete-guide-to-react-user-authentication/#Calling-an-API)

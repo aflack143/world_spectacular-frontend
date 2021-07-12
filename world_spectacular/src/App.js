@@ -37,14 +37,13 @@ const App = () => {
         <Header />
         <main>
            <Route exact path='/' render={() => <Home />}/>
-           {/* <Route exact path='/world' render={() => <World />}/>
-           <Route exact path='/country/:abbr' render={(props) => <Country {...props}/>}/> */}
-           <ProtectedRoute exact path='/world' component={World} render={() => <World />}/>
-           <ProtectedRoute exact path='/country/:abbr' component={Country} render={(props) => <Country {...props}/>}/>
+           {/* <ProtectedRoute  */}
+           <Route
+           exact path='/world' component={World} render={() => <World />}/>
+           {/* <ProtectedRoute  */}
+           <Route
+           exact path='/country/:abbr' component={Country} render={(props) => <Country {...props}/>}/>
            <ProtectedRoute path="/profile" component={Profile} render={(props) => <Profile {...props} sessionUser={this.state.sessionUser}/>}/>
-           {/* <ProtectedRoute path="/profile" render={(props) => <Profile />} /> */}
-           {/* <Route exact path='/profile/:id' render={(props) => <Profile {...props} sessionUser={this.state.sessionUser}/>}/> */}
-           {/* <Route path="/external-api" component={ExternalApi} /> */}
         </main>
         <Footer />
       </div>
