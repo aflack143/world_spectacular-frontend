@@ -126,7 +126,7 @@ class World extends Component {
                         return (
                             <p className='country-box'>
                                 <Link to={`/country/${country.alpha3Code}`}>
-                                    <CountryList country={country} />
+                                    <CountryList country={country} world={this.state.world}/>
                                 </Link>
                             </p>
                         )

@@ -21,7 +21,6 @@ const Search = (props) => {
                 <label className='radiobtn' for='name'><input className='radiobtn' type='radio' name='name' value='name' checked={props.type === 'name'}/>Name</label>
                 {/* <label className='radiobtn' for='alpha'> <input className='radiobtn' type='radio' name='alpha' value='alpha' checked={props.type === 'alpha'}/>Country Code(abbr.)</label> */}
               </fieldset>
-              <p>Vbergerï¿½</p>
             </div>
         </div>
     );
