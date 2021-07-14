@@ -4,12 +4,14 @@ header {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    max-height: 150px;
     height: 15vh;
-    min-height: 150px;
     /* color: darkgreen; */
     color: #d35d4e;
     text-shadow: bisque 1px 1px 1px;
-
+    padding: 0;
+    margin: 0;
+    flex-grow: 0;
 }
 h1 {
     height: 100px;

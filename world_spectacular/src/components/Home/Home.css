@@ -5,23 +5,51 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    height: 80vh;
+    height: 100%;
     width: 100vw;
     color: white;
   }
 
-  #home ul {
-    width: 100%;
+  .icons {
+    margin: 0;
+    height: 75vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
+  }
+
+  .icons div {
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    padding-top: 50px;
+    align-content: space-around;
     font-size: 35px;
     font-weight: bold;
+    padding: 5%;
   }
-  #home li {
-    width: 30%;
+
+  .left {
+    align-items: flex-start;
+  }
+  .right {
+    align-items: flex-end;
+  }
+  #home button {
+    width: 150px;
+    height: 150px;
     text-align: center;
-    color: bisque;
+    color: rgb(0, 0, 24);
+    background-color: #d35d4e;
+    border-radius: 50%;
     /* text-shadow: bisque 1px 1px; */
   } 
+
+  .logoutbtn {
+  border: darkblue 5px solid;
+  border-radius: 100%;
+  /* background-image: url('../images/logout-icon.jpg'); */
+  background-position: center;
+  background-size: 150px;
+  }

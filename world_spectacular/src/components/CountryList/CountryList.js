@@ -6,7 +6,11 @@ const CountryList = (props) => {
 
   return (
     <div id='country-list'>
-        {props.country.name} ({props.country.alpha3Code})
+        <p title={() => {props.country.altSpellings.map(altname => {
+            if (altname !== ''){
+            return <li>{altname}</li>
+          }
+          })}}>{props.country.name} ({props.country.alpha3Code})</p>
         {/* {onHover && */}
           <div>
           {props.country.altSpellings.map(altname => {
