@@ -39,9 +39,7 @@ const CreateProfile = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         // console.log(profile.token)
-        const dataUser = await axios.post('http://localhost:8000/profiles/create/',
-        //  {data: profile})
-         {token: profile.token, username: profile.username, photo_url: profile.photo_url, about_me: profile.about_me, country: profile.country})
+        const dataUser = await axios.post('http://localhost:8000/profiles/create/', {data: profile})
         console.log(dataUser)
         // const newUser = { id: dataUser[0].pk, ...dataUser[0].profile }
         // console.log(newUser)
