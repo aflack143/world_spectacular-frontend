@@ -18,16 +18,6 @@ const CreateProfile = (props) => {
         country: null,
     })
 
-    // const fetchWorldData = async () => {
-    //     const globe = await axios(`http://localhost:8000/world/`)
-    //     const allCountryNames = {}
-    //     globe.data.forEach(country => {
-    //       allCountryNames[country.fields.country_code] = country.fields.country_name
-    //     })
-    //     setWorld({world: allCountryNames})
-    //     console.log(world)
-    //   }
-
     const handleOnChange = (e) => {
         const value = e.target.value
         setProfile({
@@ -38,7 +28,6 @@ const CreateProfile = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // console.log(profile.token)
         const dataUser = await axios.post('http://localhost:8000/profiles/create/', {data: profile})
         console.log(dataUser)
         // const newUser = { id: dataUser[0].pk, ...dataUser[0].profile }
@@ -50,10 +39,6 @@ const CreateProfile = (props) => {
         // })
         // this.props.history.push('/world');
     }
-
-    // useEffect (() => {
-    //     fetchWorldData()
-    // }, [])
 
         return (
             <>
