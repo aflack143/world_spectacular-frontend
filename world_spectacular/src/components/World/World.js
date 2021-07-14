@@ -59,19 +59,9 @@ class World extends Component {
         })
     }
 
-    // setCountryState = async (resp) => {
-    //     await this.setState({
-    //         countries: resp.data,
-    //         world: this.state.world,
-    //         type: this.state.type,
-    //         searchInput: this.state.searchInput,
-    //         errorMsg: this.state.errorMsg
-    //     }, () =>{})}
-
     fetchData = async () => {
         await axios.get(`https://restcountries.eu/rest/v2/${this.state.type}/${this.state.searchInput}`)
         .then(resp => this.setState(prevState=>({...prevState, countries: resp.data})))
-        // .then(resp => this.setCountryState(resp))
         .catch(err => this.setState(prevState=>({...prevState, errorMsg: err.message})))
         console.log(`${this.state.searchInput}`)
     }
@@ -88,7 +78,6 @@ class World extends Component {
             })
             return
             }
-        // console.log(e.target.value)
         this.setState({
             countries: this.state.countries,
             world: this.state.world,
@@ -109,6 +98,7 @@ class World extends Component {
             errorMsg: ''
         })
     }
+    
     render() {
         console.log(this.state.countries)
         const countries = this.state.countries

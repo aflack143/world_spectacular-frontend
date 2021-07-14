@@ -70,7 +70,6 @@ class Country extends Component {
     const country = this.state.country
     const countryApi = this.state.countryApi
     const pictures = this.state.pictures
-    console.log(countryApi.anthem)
     return (
       <div background-image='url{country.flag}'>
         <h2>Country</h2>

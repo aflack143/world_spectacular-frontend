@@ -4,8 +4,10 @@ header {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 150px;
-    color: darkgreen;
+    height: 15vh;
+    min-height: 150px;
+    /* color: darkgreen; */
+    color: #d35d4e;
     text-shadow: bisque 1px 1px 1px;
 
 }
