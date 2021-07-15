@@ -38,7 +38,7 @@ const UserVisit = (props) => {
     //     await setUserVisitedCountries(sub)
     //     await findUserCountries()
     // }, [])
-    console.log(userVisitedCountries.sub)
+    // console.log(userVisitedCountries.sub)
     return (
         <div>
             <button onClick={ async() => await findUserCountries}>Add to Visited Countries</button>
