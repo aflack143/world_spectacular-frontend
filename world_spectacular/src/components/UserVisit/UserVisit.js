@@ -6,17 +6,17 @@ import axios from 'axios';
 const UserVisit = (props) => {
 
     const { user } = useAuth0();
-    const sub = user;
+    const { sub } = user;
 
-    const [userVisitedCountries, setUserVisitedCountries] = useState(sub)
+    const [sessionToken, setSessionToken] = useState(sub)
+    const [userVisitedCountries, setUserVisitedCountries] = useState({})
     // const [userVisitedCountries, setUserVisitedCountries] = useState('')
   
     const findUserCountries = async (e) => { 
         e.preventDefault()
         // const { sub } = user;
         console.log('btn clicked')
-        setUserVisitedCountries(userVisitedCountries.sub)
-        const userVisited = await axios(`http://localhost:8000/profiles/${userVisitedCountries.sub}/visited/`)  
+        const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)  
         console.log(userVisited);
         // const userVisitedCountries = userVisited.map(visited => {
         //     return (visited)
@@ -27,7 +27,7 @@ const UserVisit = (props) => {
 
 
     const updateCountryVisit = async () => {
-        await axios.post(`http://localhost:8000/profiles/${userVisitedCountries.sub}/${props.countryId}/`).then(resp => {
+        await axios.post(`http://localhost:8000/profiles/${sessionToken}/${props.countryId}/`).then(resp => {
             console.log(resp)
         })  
         // console.log(countryVisit)
