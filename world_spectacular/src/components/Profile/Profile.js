@@ -1,27 +1,33 @@
 import './Profile.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth0  } from "@auth0/auth0-react";
 import CreateProfile from '../CreateProfile/CreateProfile';
-import EditProfile from '../EditProfile/EditProfile';
 import axios from 'axios';
 
 const Profile = (props) => {
   const { user } = useAuth0();
-  const { sub, picture, email } = user;
-
-  //     const [profile, setProfile] = useState({
-  //       token: sub,
-  //       username: '',
-  //       photo_url: '',
-  //       about_me: '',
-  //       country: '',
-  // })
+  const { sub, picture } = user;
 
   const [sessionUser, setSessionUser] = useState({})
-  const [activeProfile, setActiveProfile] = useState({})
+  const [userVisit, setUserVisit] = useState({
+    visited: [],
+    dreamVisit: [],
+  })
   const [sessionToken, setSessionToken] = useState(sub)
+  // const [sessionToken, setSessionToken] = useState('tested_code')
 
-  const fetchUserData = async (input) => {
+  const getUserVist = async () => {
+    const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)
+    const visitedCountryIds =  userVisited.data.map(visit => visit.fields.country)
+    const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)
+    const dreamVisitCountryIds =  userDreamVisit.data.map(visit => visit.fields.country)
+    setUserVisit({
+      visited: visitedCountryIds,
+      dreamVisit: dreamVisitCountryIds,
+    })
+  }
+
+  const fetchUserData = async () => {
     const user = await axios.get(`http://localhost:8000/profiles/${sessionToken}/`)
     const sessionUser = user.data[0].fields
     setSessionUser({
@@ -31,15 +37,18 @@ const Profile = (props) => {
       about_me: sessionUser.about_me,
       country: sessionUser.country,
     })
+    getUserVist()
   }
 
-  console.log(sessionUser)
+  const deleteUserProfile = async (e) => {
+    e.preventDefault()
+    await axios.delete(`http://localhost:8000/profiles/${sessionToken}/delete/`)
+  }
 
-  useState (() => {
+  useEffect (() => {
     fetchUserData()
   }, [])
 
-console.log(`http://localhost:8000/profiles/${sessionToken}/`)
   return (
     <div>
       {!sessionUser.token ?
@@ -47,22 +56,33 @@ console.log(`http://localhost:8000/profiles/${sessionToken}/`)
         :
         <div id='profile'>
           <h3>{sessionUser.username}</h3>
+          <button onClick={() => deleteUserProfile}>Delete Profile</button>
           <div className='profile'>
             <img src={sessionUser.photo_url ? sessionUser.photo_url : picture}alt='profile-picture'/>
             <div>
-              <p>test</p>
-              {/* <p>{props.user.name}</p>
-              <p>{props.user.country}</p> */}
+              <p>{sessionUser.about_me}</p>
             </div>
           </div>
           <div className='places'>
             <div>
               <h5>Places visited:</h5>
-              <li>test</li>
+              <ul>
+                {userVisit.visited && userVisit.visited.map(visitedcountry => {
+                  return (
+                  <li>{visitedcountry}</li>
+                  )
+                })}
+              </ul>
             </div>
             <div>
               <h5>Places I want to visit:</h5>
-              <li>test</li>
+              <ul>
+                {userVisit.dreamVisit && userVisit.dreamVisit.map(dreamVisitcountry => {
+                  return (
+                  <li>{dreamVisitcountry}</li>
+                  )
+                })}
+              </ul>
             </div>
           </div>
         </div>

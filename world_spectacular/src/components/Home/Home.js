@@ -1,7 +1,6 @@
 import './Home.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoginButton from '../LoginButton/LoginButton';
 import Hover from '../Hover/Hover';
 import { useAuth0 } from '@auth0/auth0-react';
 

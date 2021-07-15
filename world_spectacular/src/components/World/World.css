@@ -13,12 +13,11 @@
 }
 
 .country-box {
-    /* border: 1px black solid; */
     width: 250px;
     max-width: 30%;
     min-height: 24px;
     text-align: left;
-    margin: auto;
+    margin: 0 auto;
 }
 
 #world img {

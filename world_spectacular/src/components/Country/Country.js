@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
 import { Link } from 'react-router-dom';
+import UserVisit from '../UserVisit/UserVisit';
 
 class Country extends Component {
   constructor(props){
@@ -14,7 +15,8 @@ class Country extends Component {
       borders: [],
       countryApi: {},
       countryId:  '',
-      countryNames: {}
+      countryNames: {}, 
+      // sessionUserToken: ''
     }
   }
 
@@ -49,9 +51,13 @@ class Country extends Component {
     this.fetchCountryData()
   }
 
+  // updateCountryVisit = async () => {
+  //   const countryVisit = await axios(`http://localhost:8000/profiles/${this.state.sessionUserToken}/${this.state.countryId}/`)  
+  // console.log(countryVisit.data)
+  // }
+
   fetchCountryData = async () => {
-    const countryPhotos = await axios(`http://localhost:8000/country/${this.state.countryId}/photos/`)  
-    console.log(countryPhotos.data)
+    const countryPhotos = await axios(`http://localhost:8000/country/${this.state.countryId}/photos/`)
     this.setState(prevState=>({
       ...prevState,
       pictures: countryPhotos.data
@@ -74,6 +80,7 @@ class Country extends Component {
       <div background-image='url{country.flag}'>
         <h2>Country</h2>
         <h2>{country.name} ({country.alpha3Code})</h2>
+        <UserVisit countryId={this.state.countryId} />
         <div>
           <img className='flag' src={country.flag} alt='flag'/>
           <img className='globe' src={countryApi.globe_map}/>

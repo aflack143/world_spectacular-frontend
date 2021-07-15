@@ -13,7 +13,8 @@ class World extends Component {
             countries: [],
             world: [],
             type: 'name',
-            searchInput: null,
+            typeFullName: 'name',
+            searchInput: '',
             errorMsg: ''
         }
     }
@@ -51,18 +52,32 @@ class World extends Component {
     }
 
     handleSearchType = (e) => {
+        e.preventDefault()
+        if(e.target.value === 'lang'){
+            this.setState({
+                countries: this.state.countries,
+                world: this.state.world,
+                type: e.target.value,
+                typeFullName: 'language',
+                searchInput: null,
+                errorMsg: this.state.errorMsg
+            })
+        } else {
         this.setState({
             countries: this.state.countries,
+            world: this.state.world,
             type: e.target.value,
-            searchInput: this.state.searchInput,
+            typeFullName: e.target.value,
+            searchInput: null,
             errorMsg: this.state.errorMsg
         })
-    }
+    }}
 
     fetchData = async () => {
         await axios.get(`https://restcountries.eu/rest/v2/${this.state.type}/${this.state.searchInput}`)
         .then(resp => this.setState(prevState=>({...prevState, countries: resp.data})))
         .catch(err => this.setState(prevState=>({...prevState, errorMsg: err.message})))
+        console.log(`${this.state.errorMsg}`)
         console.log(`${this.state.searchInput}`)
     }
 
@@ -73,6 +88,7 @@ class World extends Component {
                 countries: this.state.world,
                 world: this.state.world,
                 type: this.state.type,
+                typeFullName: this.state.typeFullName,
                 searchInput: null,
                 errorMsg: this.state.errorMsg
             })
@@ -82,6 +98,7 @@ class World extends Component {
             countries: this.state.countries,
             world: this.state.world,
             type: this.state.type,
+            typeFullName: this.state.typeFullName,
             searchInput: e.target.value,
             errorMsg: this.state.errorMsg
         }, () => {
@@ -94,6 +111,7 @@ class World extends Component {
             countries: countries.data,
             world: countries.data,
             type: 'name',
+            typeFullName: 'name',
             searchInput: null,
             errorMsg: ''
         })
@@ -109,7 +127,7 @@ class World extends Component {
                 <div>
                     <Search searchInput={this.state.searchInput} type={this.state.type} searchWorld={this.searchWorld} handleSearchType={this.handleSearchType}/>
                     {this.state.searchInput !== null && 
-                    <p>Search results for '{this.state.searchInput}'</p>}
+                    <p>{this.state.countries.length} Search results for {this.state.typeFullName} '{this.state.searchInput}'</p>}
                 </div>
                 <div className='world-container'>
                     {countries.map(country => {
