@@ -11,7 +11,7 @@ const Profile = (props) => {
   const [sessionUser, setSessionUser] = useState({})
   const [userVisit, setUserVisit] = useState({
     visited: [],
-    dreamVisit: [],
+    // dreamVisit: [],
   })
   const [sessionToken, setSessionToken] = useState(sub)
   // const [sessionToken, setSessionToken] = useState('tested_code')
@@ -19,11 +19,11 @@ const Profile = (props) => {
   const getUserVist = async () => {
     const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)
     const visitedCountryIds =  userVisited.data.map(visit => visit.fields.country)
-    const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)
-    const dreamVisitCountryIds =  userDreamVisit.data.map(visit => visit.fields.country)
+    // const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)
+    // const dreamVisitCountryIds =  userDreamVisit.data.map(visit => visit.fields.country)
     setUserVisit({
       visited: visitedCountryIds,
-      dreamVisit: dreamVisitCountryIds,
+      // dreamVisit: dreamVisitCountryIds,
     })
   }
 

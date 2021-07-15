@@ -14,6 +14,7 @@ const UserVisit = (props) => {
     const findUserCountries = async (e) => { 
         e.preventDefault()
         // const { sub } = user;
+        console.log('btn clicked')
         setUserVisitedCountries(userVisitedCountries.sub)
         const userVisited = await axios(`http://localhost:8000/profiles/${userVisitedCountries.sub}/visited/`)  
         console.log(userVisited);
@@ -26,8 +27,10 @@ const UserVisit = (props) => {
 
 
     const updateCountryVisit = async () => {
-        const countryVisit = await axios.post(`http://localhost:8000/profiles/${userVisitedCountries.sub}/${props.countryId}/`)  
-        console.log(countryVisit)
+        await axios.post(`http://localhost:8000/profiles/${userVisitedCountries.sub}/${props.countryId}/`).then(resp => {
+            console.log(resp)
+        })  
+        // console.log(countryVisit)
         // const updatedVisit = countryVisit.map(visited => {
         //     return (visited)
         // })
@@ -41,7 +44,7 @@ const UserVisit = (props) => {
     // console.log(userVisitedCountries.sub)
     return (
         <div>
-            <button onClick={ async() => await findUserCountries}>Add to Visited Countries</button>
+            <button onClick={findUserCountries}>Add to Visited Countries</button>
             {/* <button onClick={() => 'test'}>Add to Dream Visit Countries</button> */}
         </div>
     );
