@@ -1,5 +1,5 @@
 import './CreateProfile.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth0  } from "@auth0/auth0-react";
 import axios from 'axios';
 
@@ -8,8 +8,6 @@ const CreateProfile = (props) => {
     const { user } = useAuth0();
     const { nickname, picture, sub } = user;
 
-    const [world, setWorld] = useState({})
-    const [users, setUsers] = useState({})
     const [profile, setProfile] = useState({
         token: sub,
         username: null,
@@ -29,15 +27,6 @@ const CreateProfile = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const dataUser = await axios.post('http://localhost:8000/profiles/create/', {data: profile})
-        console.log(dataUser)
-        // const newUser = { id: dataUser[0].pk, ...dataUser[0].profile }
-        // console.log(newUser)
-        // const users = users
-        // users.push(newUser)
-        // setUsers({
-        //     users: users
-        // })
-        // this.props.history.push('/world');
     }
 
         return (
@@ -49,7 +38,7 @@ const CreateProfile = (props) => {
                         <label for='username'>Username:</label>
                         <input className='create' type='text' name='username' placeholder='username'
                             value={profile.username} 
-                            // defaultValue={nickname}
+                            defaultValue={nickname}
                             onChange={handleOnChange}
                             />
                     </div>
@@ -57,7 +46,7 @@ const CreateProfile = (props) => {
                         <label for='photo_url'>Profile Picture:</label>
                         <input className='create' type='text' name='photo_url' placeholder='photo url address' 
                         value={profile.photo_url} 
-                        // defaultValue={picture}
+                        defaultValue={picture}
                             onChange={handleOnChange}
                             />
                     </div>

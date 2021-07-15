@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 
-
 const Hover = ({ rotation = 0, timing = 150, children }) => {
     const [isHovered, setIsHovered] = useState(false);
     const style = {

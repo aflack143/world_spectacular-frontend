@@ -14,27 +14,24 @@ import Nav from './components/Nav/Nav';
 
 const App = (props) => {
   const { isLoading, isAuthenticated } = useAuth0();
-  console.log(useAuth0())
 
   // if (isLoading) {
   //   return <Home />;
   // }
 
-  const [homeUrl, setHomeUrl] = useState('')
+  // const [homeUrl, setHomeUrl] = useState('')
   
-  useEffect (() => {
-    (window.location.pathname === '/') ?
-    setHomeUrl({homeUrl: true})
-    : setHomeUrl({homeUrl: false})
-  }, 
-  [window.location.pathname],
-  console.log(homeUrl)
-  )
+  // useEffect (() => {
+  //   (window.location.pathname === '/') ?
+  //   setHomeUrl({homeUrl: true})
+  //   : setHomeUrl({homeUrl: false})
+  // }, 
+  // [window.location.pathname],
+  // )
   
     return (
       <div className="App">
-        <Header {...props} isAuthenticated={isAuthenticated}
-        homeUrl={homeUrl}/>
+        <Header {...props} isAuthenticated={isAuthenticated} />
         {/* {!homeUrl && 
         <Nav {...props} isAuthenticated={isAuthenticated}
         homeUrl={homeUrl}/>

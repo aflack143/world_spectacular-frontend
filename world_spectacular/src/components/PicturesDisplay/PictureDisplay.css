@@ -19,7 +19,7 @@
     background-color: black;
 }
 .picture img {
-    width: auto;
-    max-width: 400px;
+    max-width: 100%;
+    min-width: auto;
     height: 300px;
 }
