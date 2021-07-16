@@ -5,50 +5,61 @@ import axios from 'axios';
 
 const UserVisit = (props) => {
 
-    const { user } = useAuth0();
-    const { sub } = user;
+    const [sessionToken, setSessionToken] = useState('')
+    const [userVisitedCountries, setUserVisitedCountries] = useState([])
+    const [userDreamVisitCountries, setUserDreamVisitCountries] = useState([])
 
-    const [sessionToken, setSessionToken] = useState(sub)
-    const [userVisitedCountries, setUserVisitedCountries] = useState({})
-    const [userDreamVisitCountries, setUserDreamVisitCountries] = useState({})
+    const { user } = useAuth0();
+    const authLink = (() => {
+        const { sub } = user;
+        console.log(sub)
+         return (sub)
+    });
+    // const { user } = useAuth0();
+    // const { sub, picture } = user;
+
   
     const findUserCountries = async (e) => { 
         e.preventDefault()
-        console.log('btn clicked')
         const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)  
-        console.log(userVisited);
-        setUserVisitedCountries({})
+        setUserVisitedCountries({userVisited})
+        console.log(userVisitedCountries);
         updateCountryVisit()
     }
     const findUserDreamCountries = async (e) => { 
         e.preventDefault()
-        console.log('btn clicked')
         const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)  
-        console.log(userDreamVisit);
-        setUserDreamVisitCountries({})
+        setUserDreamVisitCountries({userDreamVisit})
         updateCountryVisit()
     }
-
 
     const updateCountryVisit = async () => {
         await axios.post(`http://localhost:8000/profiles/${sessionToken}/${props.countryId}/`).then(resp => {
             console.log(resp)
-            // const updateVisit = resp.data[0]
-            // setUserVisitedCountries({
-            // })
         })  
-        // console.log(countryVisit)
-        // const updatedVisit = countryVisit.map(visited => {
-        //     return (visited)
-        // })
         // window.location.reload()
     }
+    const fetchUserData = async () => {
+        const user = await axios.get(`http://localhost:8000/profiles/${sessionToken}/`)
+        const sessionUser = user.data[0].fields
+        setSessionToken(sessionUser.token,
+        )
+    }
 
+    useEffect (async() => {
+        // setSessionToken(sub)
+        await setSessionToken(authLink)
+        fetchUserData()
+      }, [])
+      console.log(sessionToken);
+    //   console.log(setUserDreamVisitCountries);
     return (
-        <div>
+            // {props.isAuthenticated &&
+        <div className='userVisit'>
             <button onClick={findUserCountries}>Add to Visited Countries</button>
-            <button onClick={findUserDreamCountries}>Add to Dream Visit Countries</button>
-        </div>
+            {/* <button onClick={findUserDreamCountries}>Add to Dream Visit Countries</button> */}
+            </div>
+        // }
     );
 }
 

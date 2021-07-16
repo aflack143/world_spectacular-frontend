@@ -1,0 +1,9 @@
+.userVisit button {
+    width: 150px;
+    background-color: #d35d4e;
+    color: rgb(0, 0, 24);
+    border-radius: 15px;
+    font: inherit;
+    /* border: none; */
+    margin: 0 5px;
+}

@@ -11,11 +11,10 @@ const Profile = (props) => {
   const [sessionUser, setSessionUser] = useState({})
   const [userVisit, setUserVisit] = useState({
     visited: [],
-    // dreamVisit: [],
+    dreamVisit: [],
   })
-  // const [sessionToken, setSessionToken] = useState(sub)
-  const [sessionToken, setSessionToken] = useState('tested_code')
-
+  const [sessionToken, setSessionToken] = useState(sub)
+ 
   const getUserVist = async () => {
     const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)
     const visitedCountryIds =  userVisited.data.map(visit => visit.fields.country)
@@ -45,9 +44,17 @@ const Profile = (props) => {
     console.log('delete started')
     await axios.delete(`http://localhost:8000/profiles/${sessionToken}/delete/`)
   }
-  console.log(sub)
+  const fetchWorldData = async () => {
+    const world = await axios(`http://localhost:8000/world/`)
+    const allCountryNames = world.data.map(country => {
+      return country
+    })
+    console.log(allCountryNames)
+  }
 
   useEffect (() => {
+    fetchWorldData()
+    setSessionToken(sub)
     fetchUserData()
   }, [])
 
@@ -76,7 +83,7 @@ const Profile = (props) => {
                 })}
               </ul>
             </div>
-            <div>
+            {/* <div>
               <h5>Places I want to visit:</h5>
               <ul>
                 {userVisit.dreamVisit && userVisit.dreamVisit.map(dreamVisitcountry => {
@@ -85,7 +92,7 @@ const Profile = (props) => {
                   )
                 })}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
         }

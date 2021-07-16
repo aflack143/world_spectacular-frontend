@@ -15,7 +15,8 @@ class Country extends Component {
       borders: [],
       countryApi: {},
       countryId:  '',
-      countryNames: {}, 
+      countryNames: {},
+      pictures: [] 
     }
   }
 
@@ -50,11 +51,6 @@ class Country extends Component {
     this.fetchCountryData()
   }
 
-  // updateCountryVisit = async () => {
-  //   const countryVisit = await axios(`http://localhost:8000/profiles/${this.state.sessionUserToken}/${this.state.countryId}/`)  
-  // console.log(countryVisit.data)
-  // }
-
   fetchCountryData = async () => {
     const countryPhotos = await axios(`http://localhost:8000/country/${this.state.countryId}/photos/`)
     this.setState(prevState=>({
@@ -79,7 +75,7 @@ class Country extends Component {
       <div id='countryDisplay'>
         <h2>Country</h2>
         <h2>{country.name} ({country.alpha3Code})</h2>
-        <UserVisit countryId={this.state.countryId} />
+        <UserVisit countryId={this.state.countryId}/>
         <div className='countryInfo'>
           <img className='flag' src={country.flag} alt='flag'/>
           <div className='countryFacts'>

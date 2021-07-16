@@ -1,6 +1,5 @@
 #home {
   background:rgb(0, 0, 24);
-  /* background:bisque; */
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Globespin_persec.gif');
   background-repeat: no-repeat;
   background-position: center;
@@ -41,7 +40,6 @@
 #home button {
   width: 150px;
   height: 150px;
-  /* text-align: center; */
   color: rgb(0, 0, 24);
   background-color: rgb(177, 146, 108);
   border-radius: 50%;
@@ -64,7 +62,6 @@
 }
 .photobtn {
   background-image: url('../../images/gallery-icon.png');
-  /* background-image: url('../../images/camera.png'); */
 }
 
 .profilebtn {
@@ -73,7 +70,6 @@
 
 #home .logout {
   background-size: 220px;
-  /* background-image: url('../../images/logout-icon.jpg'); */
   background-image: url('../../images/logout-circle-red.jpg');
 }
 #home .login {
@@ -81,6 +77,4 @@
   background-size: 550px;
   width: 300px;
   border-radius: 15%;
-  /* background-image: url('../../images/login.gif'); */
-  /* align-self: center; */
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, withRouter} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import './App.css';
@@ -12,7 +12,7 @@ import ProtectedRoute from "./auth/protected-route";
 import PictureDisplay from './components/PicturesDisplay/PictureDisplay';
 
 const App = (props) => {
-  const { isLoading, isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated, user } = useAuth0();
 
   return (
       <div className="App">

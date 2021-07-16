@@ -28,11 +28,16 @@
     max-width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
+    align-content: center;
 }
 
 .places div {
     text-align: center;
+}
+
+.places h5 {
+    font-size: 20px;
 }
 
 .profile img {
