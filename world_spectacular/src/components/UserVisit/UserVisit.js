@@ -5,16 +5,17 @@ import axios from 'axios';
 
 const UserVisit = (props) => {
 
-    const [sessionToken, setSessionToken] = useState('')
+    const [sessionToken, setSessionToken] = useState('google-oauth2|107395140044543295170')
     const [userVisitedCountries, setUserVisitedCountries] = useState([])
     const [userDreamVisitCountries, setUserDreamVisitCountries] = useState([])
 
-    const { user } = useAuth0();
-    const authLink = (() => {
-        const { sub } = user;
-        console.log(sub)
-         return (sub)
-    });
+    // const { user } = useAuth0();
+    // const authLink = (() => {
+        // const { sub } = user;
+        // const  sub  = user;
+    //     console.log(sub)
+    //      return (sub)
+    // });
     // const { user } = useAuth0();
     // const { sub, picture } = user;
 
@@ -23,7 +24,6 @@ const UserVisit = (props) => {
         e.preventDefault()
         const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)  
         setUserVisitedCountries({userVisited})
-        console.log(userVisitedCountries);
         updateCountryVisit()
     }
     const findUserDreamCountries = async (e) => { 
@@ -35,7 +35,6 @@ const UserVisit = (props) => {
 
     const updateCountryVisit = async () => {
         await axios.post(`http://localhost:8000/profiles/${sessionToken}/${props.countryId}/`).then(resp => {
-            console.log(resp)
         })  
         // window.location.reload()
     }
@@ -48,18 +47,15 @@ const UserVisit = (props) => {
 
     useEffect (async() => {
         // setSessionToken(sub)
-        await setSessionToken(authLink)
+        // await setSessionToken(authLink)
         fetchUserData()
       }, [])
-      console.log(sessionToken);
-    //   console.log(setUserDreamVisitCountries);
+
     return (
-            // {props.isAuthenticated &&
         <div className='userVisit'>
             <button onClick={findUserCountries}>Add to Visited Countries</button>
             {/* <button onClick={findUserDreamCountries}>Add to Dream Visit Countries</button> */}
             </div>
-        // }
     );
 }
 

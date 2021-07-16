@@ -13,7 +13,6 @@ class PictureDisplay extends Component {
 
     fetchData = async () => {
     const pictures = await axios(`http://localhost:8000/world/photos/`)
-        console.log(pictures)
         this.setState({
             pictures: pictures.data
         })

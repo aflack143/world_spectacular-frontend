@@ -23,26 +23,19 @@ const Nav = (props) => {
 
   return (
     <nav>
-        {/* <ul>
+      <ul id={navBar}>
           <li><Link to={'/'}>Home</Link></li>
           <li><Link to={'/world'}>World View</Link></li>
           <li><Link to={'/world/photos'}>Photos</Link></li>
           <li><Link to={`/profile`}>Profile</Link></li>
           <li><AuthenticationButton /></li>
-        </ul> */}
-              <ul id={navBar}>
-                  <li><Link to={'/'}>Home</Link></li>
-                  <li><Link to={'/world'}>World View</Link></li>
-                  <li><Link to={'/world/photos'}>Photos</Link></li>
-                  <li><Link to={`/profile`}>Profile</Link></li>
-                  <li><AuthenticationButton /></li>
-              </ul>
-        <div id='hmbgr'>
-          <div className={menuBtn} onClick={handleMenuClick}>
-            <div className='menu-btn_burger'>
-            </div>
+      </ul>
+      <div id='hmbgr'>
+        <div className={menuBtn} onClick={handleMenuClick}>
+          <div className='menu-btn_burger'>
           </div>
         </div>
+      </div>
     </nav>
   )
 }

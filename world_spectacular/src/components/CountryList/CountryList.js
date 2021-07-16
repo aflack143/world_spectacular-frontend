@@ -13,9 +13,6 @@ const CountryList = (props) => {
     setDisplayAltName(false)
   }
 
-
-  console.log(displayAltName)
-
   return (
     <div id='country-list'>
         <p title={() => {props.country.altSpellings.map(altname => {

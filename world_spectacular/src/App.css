@@ -24,16 +24,15 @@ main {
   flex-grow: 3;
 }
 
-/* .scrollable-element {
-  scrollbar-color: green blue;
-} */
-
 img {
     width: 90%;
     height: 90%;
 }
 
 a {
-  /* text-decoration: none; */
   color: inherit;
+}
+
+fieldset {
+  border: none;
 }

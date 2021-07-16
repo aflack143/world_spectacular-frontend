@@ -118,7 +118,6 @@ class World extends Component {
     }
     
     render() {
-        console.log(this.state.countries)
         const countries = this.state.countries
         return (
             <div id='world'>

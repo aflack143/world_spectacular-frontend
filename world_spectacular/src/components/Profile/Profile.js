@@ -41,7 +41,6 @@ const Profile = (props) => {
 
   const deleteUserProfile = async (e) => {
     e.preventDefault()
-    console.log('delete started')
     await axios.delete(`http://localhost:8000/profiles/${sessionToken}/delete/`)
   }
   const fetchWorldData = async () => {
@@ -49,7 +48,6 @@ const Profile = (props) => {
     const allCountryNames = world.data.map(country => {
       return country
     })
-    console.log(allCountryNames)
   }
 
   useEffect (() => {

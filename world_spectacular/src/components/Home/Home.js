@@ -16,9 +16,7 @@ const Home = (props) => {
       </div>
       :
         <div className='icons'>
-          {/* <img src={'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Ftrevornace%2Ffiles%2F2015%2F11%2Ftaj-mahal-india-1200x740.jpg'}/> */}
-            {/* <button><AuthenticationButton /></button> */}
-            <div className='left'>
+              <div className='left'>
               <Hover rotation={90} timing={500}><Link to={'/world'}><button className='worldbtn'/></Link></Hover>
               <Hover rotation={-90} timing={500}><Link to={'/world/photos'}><button className='photobtn'/></Link></Hover>
             </div>

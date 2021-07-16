@@ -26,10 +26,8 @@ const CreateProfile = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(profile)
         await axios.post('http://localhost:8000/profiles/create/', {data: profile})
         .then(resp => {
-            console.log(resp)
         })
     }
 
