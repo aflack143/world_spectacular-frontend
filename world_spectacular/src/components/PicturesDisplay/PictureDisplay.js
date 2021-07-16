@@ -29,10 +29,11 @@ class PictureDisplay extends Component {
                 {pictures.map(picture => {
                     return (
                         <div className='picture' >
-                          <img src={picture.fields.picture_url}/>
-                          {/* <p>{picture.fields.picture_location}</p>
-                          <p><a href={picture.fields.picture_photographer_link}>{picture.fields.picture_photographer}</a> </p>
-                          <p>Picture <a href={picture.fields.picture_source}>source</a> </p> */}
+                            <img src={picture.fields.picture_url}/>
+                            <div>
+                                <p>{picture.fields.picture_location}</p>
+                                <p><a href={picture.fields.picture_photographer_link}>{picture.fields.picture_photographer}</a> / Picture <a href={picture.fields.picture_source}>source</a> </p>
+                            </div>
                         </div>)
                 })}
             </div>

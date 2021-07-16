@@ -6,7 +6,7 @@
   background-position: center;
   background-size: contain;
   min-height: 100%;
-  width: 100vw;
+  width: 100%;
   color: white;
   flex-grow: 3;
   ;
@@ -43,10 +43,11 @@
   height: 150px;
   /* text-align: center; */
   color: rgb(0, 0, 24);
-  background-color: #d35d4e;
+  background-color: rgb(177, 146, 108);
   border-radius: 50%;
   background-position: center;
   background-size: 150px;
+  border: rgb(177, 146, 108) solid 5px;
 } 
 
 .loginbox {
@@ -58,21 +59,28 @@
 }
 
 #home .worldbtn {
-  background-size: 200px;
+  background-size: 260px;
   background-image: url('../../images/globesearch.jpg');
 }
 .photobtn {
-  background-image: url('../../images/camera.png');
+  background-image: url('../../images/gallery-icon.png');
+  /* background-image: url('../../images/camera.png'); */
 }
 
 .profilebtn {
   background-image: url('../../images/traveler.png');
 }
 
-.logout {
-  background-image: url('../../images/logout-icon.jpg');
+#home .logout {
+  background-size: 220px;
+  /* background-image: url('../../images/logout-icon.jpg'); */
+  background-image: url('../../images/logout-circle-red.jpg');
 }
-.login {
-  background-image: url('../../images/login.gif');
+#home .login {
+  background-image: url('../../images/login-wide.png');
+  background-size: 550px;
+  width: 300px;
+  border-radius: 15%;
+  /* background-image: url('../../images/login.gif'); */
   /* align-self: center; */
 }

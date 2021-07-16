@@ -13,17 +13,17 @@ const Profile = (props) => {
     visited: [],
     // dreamVisit: [],
   })
-  const [sessionToken, setSessionToken] = useState(sub)
-  // const [sessionToken, setSessionToken] = useState('tested_code')
+  // const [sessionToken, setSessionToken] = useState(sub)
+  const [sessionToken, setSessionToken] = useState('tested_code')
 
   const getUserVist = async () => {
     const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)
     const visitedCountryIds =  userVisited.data.map(visit => visit.fields.country)
-    // const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)
-    // const dreamVisitCountryIds =  userDreamVisit.data.map(visit => visit.fields.country)
+    const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)
+    const dreamVisitCountryIds =  userDreamVisit.data.map(visit => visit.fields.country)
     setUserVisit({
       visited: visitedCountryIds,
-      // dreamVisit: dreamVisitCountryIds,
+      dreamVisit: dreamVisitCountryIds,
     })
   }
 
@@ -42,25 +42,27 @@ const Profile = (props) => {
 
   const deleteUserProfile = async (e) => {
     e.preventDefault()
+    console.log('delete started')
     await axios.delete(`http://localhost:8000/profiles/${sessionToken}/delete/`)
   }
+  console.log(sub)
 
   useEffect (() => {
     fetchUserData()
   }, [])
 
   return (
-    <div>
+    <div id='profileBox'>
       {!sessionUser.token ?
         <CreateProfile {...props}/>
         :
         <div id='profile'>
           <h3>{sessionUser.username}</h3>
-          <button onClick={() => deleteUserProfile}>Delete Profile</button>
+          <button onClick={deleteUserProfile}>Delete Profile</button>
           <div className='profile'>
             <img src={sessionUser.photo_url ? sessionUser.photo_url : picture}alt='profile-picture'/>
             <div>
-              <p>{sessionUser.about_me}</p>
+              <p>About me: {sessionUser.about_me}</p>
             </div>
           </div>
           <div className='places'>
@@ -92,25 +94,3 @@ const Profile = (props) => {
 }
 
 export default Profile;
-// export default withAuthenticationRequired(Profile);
-
-
-        // <EditProfile />
-      {/* <div className="row align-items-center profile-header">
-        <div className="col-md-2 mb-3">
-          <img
-            src={picture}
-            alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
-        </div>
-        <div className="col-md text-center text-md-left">
-          <h2>{name}</h2>
-          <p className="lead text-muted">{email}</p>
-        </div>
-      </div>
-      <div className="row">
-        <pre className="col-12 text-light bg-dark p-4">
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div> */}

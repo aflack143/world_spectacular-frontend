@@ -133,14 +133,9 @@ class World extends Component {
                     {countries.map(country => {
                         return (
                             <p className='country-box'>
-                                {onmouseenter ?
                                 <Link to={`/country/${country.alpha3Code}`}>
                                     <CountryList country={country} world={this.state.world}/>
                                 </Link>
-                                :
-                                <Link to={`/country/${country.alpha3Code}`}>
-                                    {country.name} ({country.alpha3Code})
-                                </Link>}
                             </p>
                         )
                     })}

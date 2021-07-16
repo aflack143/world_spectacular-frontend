@@ -1,3 +1,25 @@
+#countryDisplay {
+    width: 100%;
+    height: fit-content;
+}
+
+.countryInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.countryMap {
+    display: flex;
+    flex-direction: column;
+}
+
+.countryFacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .flag {
     width: 500px;
     height: 275px;
@@ -5,6 +27,8 @@
 
 .globe {
     width: 275px;
+    background-color: black;
+    padding: 5px;
 }
 
 #pictures {
@@ -14,7 +38,17 @@
     justify-content: space-evenly;
 }
 
-.picture {
+.countryPicture {
+    height: fit-content;
+    width: 600px;
     max-width: 49%;
-    /* height: fit-content; */
+    padding: 10px;
+    background-color: black;
+}
+
+.countryPicture img {
+    max-width: 100%;
+    width: auto;
+    height: 500px;
+    max-height: 60vh;
 }

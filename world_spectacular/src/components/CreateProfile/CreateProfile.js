@@ -26,19 +26,22 @@ const CreateProfile = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const dataUser = await axios.post('http://localhost:8000/profiles/create/', {data: profile})
+        console.log(profile)
+        await axios.post('http://localhost:8000/profiles/create/', {data: profile})
+        .then(resp => {
+            console.log(resp)
+        })
     }
 
         return (
             <>
             <div id='createProfile'>   
                 <h2>Let's begin your journey</h2>
-                <form onSubmit={(e) => handleSubmit(e)}>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label for='username'>Username:</label>
                         <input className='create' type='text' name='username' placeholder='username'
-                            value={profile.username} 
-                            defaultValue={nickname}
+                            value={profile.username}
                             onChange={handleOnChange}
                             />
                     </div>
@@ -46,7 +49,6 @@ const CreateProfile = (props) => {
                         <label for='photo_url'>Profile Picture:</label>
                         <input className='create' type='text' name='photo_url' placeholder='photo url address' 
                         value={profile.photo_url} 
-                        defaultValue={picture}
                             onChange={handleOnChange}
                             />
                     </div>

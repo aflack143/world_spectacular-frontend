@@ -1,22 +1,22 @@
 header {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Hong_Kong_at_night.jpg/1920px-Hong_Kong_at_night.jpg");
-    /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f4/Haraaz%2C_Yemen.jpg"); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     max-height: 150px;
     height: 15vh;
-    /* color: darkgreen; */
-    color: #d35d4e;
-    text-shadow: bisque 1px 1px 1px;
+    color: rgb(0, 0, 24);
+    text-shadow: #d35d4e 2px 2px 4px;
     padding: 0;
     margin: 0;
     flex-grow: 0;
 }
 h1 {
-    height: 100px;
+    max-height: 100px;
+    height: 10vh;
     font-size: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-shadow: #d35d4e 2px 2px 4px;
 }

@@ -1,4 +1,4 @@
-#world li {
-    list-style: square;
-    width: 100%;
+.alt {
+    padding-left: 5px;
+    font-size: 14px;
 }

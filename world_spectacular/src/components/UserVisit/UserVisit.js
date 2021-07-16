@@ -10,18 +10,22 @@ const UserVisit = (props) => {
 
     const [sessionToken, setSessionToken] = useState(sub)
     const [userVisitedCountries, setUserVisitedCountries] = useState({})
-    // const [userVisitedCountries, setUserVisitedCountries] = useState('')
+    const [userDreamVisitCountries, setUserDreamVisitCountries] = useState({})
   
     const findUserCountries = async (e) => { 
         e.preventDefault()
-        // const { sub } = user;
         console.log('btn clicked')
         const userVisited = await axios(`http://localhost:8000/profiles/${sessionToken}/visited/`)  
         console.log(userVisited);
-        // const userVisitedCountries = userVisited.map(visited => {
-        //     return (visited)
-        // })
-        // setUserVisited({})
+        setUserVisitedCountries({})
+        updateCountryVisit()
+    }
+    const findUserDreamCountries = async (e) => { 
+        e.preventDefault()
+        console.log('btn clicked')
+        const userDreamVisit = await axios(`http://localhost:8000/profiles/${sessionToken}/dream_visit/`)  
+        console.log(userDreamVisit);
+        setUserDreamVisitCountries({})
         updateCountryVisit()
     }
 
@@ -29,23 +33,21 @@ const UserVisit = (props) => {
     const updateCountryVisit = async () => {
         await axios.post(`http://localhost:8000/profiles/${sessionToken}/${props.countryId}/`).then(resp => {
             console.log(resp)
+            // const updateVisit = resp.data[0]
+            // setUserVisitedCountries({
+            // })
         })  
         // console.log(countryVisit)
         // const updatedVisit = countryVisit.map(visited => {
         //     return (visited)
         // })
-        window.location.reload()
+        // window.location.reload()
     }
 
-    // useEffect (async () => {
-    //     await setUserVisitedCountries(sub)
-    //     await findUserCountries()
-    // }, [])
-    // console.log(userVisitedCountries.sub)
     return (
         <div>
             <button onClick={findUserCountries}>Add to Visited Countries</button>
-            {/* <button onClick={() => 'test'}>Add to Dream Visit Countries</button> */}
+            <button onClick={findUserDreamCountries}>Add to Dream Visit Countries</button>
         </div>
     );
 }

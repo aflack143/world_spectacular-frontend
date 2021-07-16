@@ -1,8 +1,20 @@
 
 import './CountryList.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 const CountryList = (props) => {
+
+  const [displayAltName, setDisplayAltName] = useState(false)
+
+  const handleDisplayAltNameShow = () => {
+    setDisplayAltName(true)
+  }
+  const handleDisplayAltNameHide = () => {
+    setDisplayAltName(false)
+  }
+
+
+  console.log(displayAltName)
 
   return (
     <div id='country-list'>
@@ -10,16 +22,17 @@ const CountryList = (props) => {
             if (altname !== ''){
             return <li>{altname}</li>
           }
-          })}}>{props.country.name} ({props.country.alpha3Code})</p>
-        {/* {onHover && */}
+
+          })}}onMouseEnter={handleDisplayAltNameShow} onMouseOut={handleDisplayAltNameHide}>{props.country.name} ({props.country.alpha3Code})</p>
+          {displayAltName &&
           <div>
           {props.country.altSpellings.map(altname => {
             if (altname !== ''){
-            return <li>{altname}</li>
+            return <p className='alt'> - {altname}</p>
           }
           })} 
           </div>
-        {/* }  */}
+          } 
     </div>
   );
 }

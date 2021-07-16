@@ -16,7 +16,6 @@ class Country extends Component {
       countryApi: {},
       countryId:  '',
       countryNames: {}, 
-      // sessionUserToken: ''
     }
   }
 
@@ -77,48 +76,54 @@ class Country extends Component {
     const countryApi = this.state.countryApi
     const pictures = this.state.pictures
     return (
-      <div background-image='url{country.flag}'>
+      <div id='countryDisplay'>
         <h2>Country</h2>
         <h2>{country.name} ({country.alpha3Code})</h2>
         <UserVisit countryId={this.state.countryId} />
-        <div>
+        <div className='countryInfo'>
           <img className='flag' src={country.flag} alt='flag'/>
-          <img className='globe' src={countryApi.globe_map}/>
-        </div>
-        <div>
-        {countryApi.anthem && 
-        <div>
-          <a href={countryApi.wiki_link}>Anthem</a>
-          <ReactAudioPlayer
-            src={countryApi.anthem}
-            // autoPlay
-            controls
-          />
-        </div>
-        }
-        <p>Capital: {country.capital}</p>
-        <p>Currency: {this.state.currencies.map(currency => {
-          return (`${currency.symbol} = ${currency.code} (${currency.name}) `)
-        })}</p>
-        <p>Language(s): {this.state.languages.map(language => {
-          return (`${language.name}  `)
-        })}</p>
-        <p>Population: {parseInt(country.population).toLocaleString()}</p>
-        <p>Bordering Countries:</p>
-        {this.state.borders && this.state.borders.map(border => {
-          return <li>
-            <Link to={`/country/${border}`}>
-              {border} - {this.state.countryNames[border]}
-              </Link>
-              </li> })}
-                    
+          <div className='countryFacts'>
+            <p>Capital: {country.capital}</p>
+            <p>Currency: {this.state.currencies.map(currency => {
+              return (`${currency.symbol} = ${currency.code} (${currency.name}) `)
+            })}</p>
+            <p>Language(s): {this.state.languages.map(language => {
+              return (`${language.name}  `)
+            })}</p>
+            <p>Population: {parseInt(country.population).toLocaleString()}</p>
+            <div className='border'>
+              <p>Bordering Countries:</p>
+              {this.state.borders && 
+                <div className='border'> {this.state.borders.map(border => {
+                  return <p>
+                    <Link to={`/country/${border}`}>
+                      {border} - {this.state.countryNames[border]}
+                      </Link>
+                      </p> })}
+                </div>
+              }
+            </div>
+          </div>
+          <div className='countryMap'>
+            <img className='globe' src={countryApi.globe_map}/>
+            {countryApi.anthem && 
+              <>
+                <a href={countryApi.wiki_link}>Anthem</a>
+                <ReactAudioPlayer
+                  src={countryApi.anthem}
+                  // autoPlay
+                  controls
+                />
+              </>
+            }
+          </div>
         </div>
         <p>Wikipedia <a href={countryApi.wiki_link}>Link</a> </p>
         <div id='pictures'>
           {pictures && pictures.map(picture => {
             return (
-              <div>
-                <img className='picture' src={picture.fields.picture_url}/>
+              <div className='countryPicture'>
+                <img src={picture.fields.picture_url}/>
                 <p>{picture.fields.picture_location}</p>
                 <p><a href={picture.fields.picture_photographer_link}>{picture.fields.picture_photographer}</a> </p>
                 <p>Picture <a href={picture.fields.picture_source}>source</a> </p>

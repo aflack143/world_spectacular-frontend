@@ -1,19 +1,119 @@
-nav {
+/* nav {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: center;
+} */
+
+nav button{
+    background: inherit;
+    border: inherit;
+    font: inherit;
+    background-color: none;
 }
 
-nav ul {
+#display {
+    color: d35d4e;
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: inherit;
+    color: rgb(0, 0, 24);
+    background-color: rgb(255, 99, 71, .4);
+}
+#hide {
+    display: none;
+}
+
+li {
+    font-size: 24px;
+    list-style: none;
+    width: 30%;
+    height: 50px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav {
+    width: 100%;
+    box-sizing: border-box;
+    /* background: #272727; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    max-height: 50px;
+    height: 5vh;
+    /* min-height: 100vh; */
+}
+
+.hmbgr {
+    background-color: rgb(255, 99, 71, .4);
+    width: 150px;
+    height: 300px;
+    justify-content: flex-end;
+    padding-right: 10px;
 }
 
 
-li {
-    list-style: none;
-    width: 30%;
+.menu-btn {
+    /* position: relative;   */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    background: rgb(255, 99, 71, .4);
+    /* border: 3px solid #fff; */
+}
+
+.menu-btn_burger {
+    /* right: 10px; */
+    background: #d35d4e;
+    display: flex;
+    width: 50px;
+    height: 4px;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 5px rbga(225, 101, 47, .4); */
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before, .menu-btn_burger::after {
+    content: '';
+    position: absolute;
+    background: #d35d4e;
+    width: 50px;
+    height: 4px;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 5px rbga(225, 101, 47, .4); */
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before {
+    transform: translateY(-16px);
+}
+
+.menu-btn_burger::after {
+    transform: translateY(16px);
+}
+
+/* ANIMATION */
+.menu-btn.open .menu-btn_burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+}
+
+.menu-btn.open .menu-btn_burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn_burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
 }
