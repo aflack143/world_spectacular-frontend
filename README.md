@@ -4,7 +4,19 @@
 [Link for Backend Django Repository](https://github.com/aflack143/world_spectacular_backend)
 
 
-Resources: 
+## Description:
+An application that allows a user to search for countrys in multiple search methods, providing demographic pages for each country. Available photo galley, and user profile after logging in from an email authentication program (Auth0)
+
+## Getting Started:
+Project planning and deciding on creating my own models or using an API. I found a country information API and decided to use the API and create my own model for extra contry information.
+
+![image](https://user-images.githubusercontent.com/80013194/125966953-7bcd553f-90d3-47e0-a193-50cd6cc0f986.png)
+
+
+## Technologies Used (backend):
+  Django, Postgres, Cors
+
+### Sources: 
 [Refreshing page when only /:abbr changes](https://stackoverflow.com/questions/64223938/react-link-doesnt-refresh-page-automatically)
 [Changing title bar icon](https://www.geeksforgeeks.org/how-to-add-icon-logo-in-title-bar-using-html/)
 
